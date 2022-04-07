@@ -1,0 +1,59 @@
+.login_block {
+    margin-top: 50px;
+    padding:20px;
+    border-radius: 10px;
+    background-color: #2C2C2C;
+}
+
+
+.login_signup_title {
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+}
+
+.login_signup_field_title {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.login_signup_TA {
+    width: 100%;
+    height: 30px;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+}
+
+.dropdown_role {
+    border: 0px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: white;
+}
+
+.login_signup_buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.login_signup_button {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #BC255A;
+}

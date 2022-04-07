@@ -1,0 +1,47 @@
+/* Profile Info */
+.profile_info {
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 5px;
+    background-color: #2C2C2C;
+}
+
+.author_name {
+    margin: 0px 0px 5px;
+    font-size: 32px;
+    font-weight: 600;
+    color: white;
+}
+
+.date_joined {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
+
+.review_count {
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
+
+.edit_button {
+    padding: 5px 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #BC255A;
+}
+
+/* Profile Info */
+
+
+.review_section_title {
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: 600;
+    color: white;
+}

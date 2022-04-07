@@ -1,0 +1,49 @@
+.edit_profile_block {
+    margin-top: 50px;
+    padding:20px;
+    border-radius: 10px;
+    background-color: #2C2C2C;
+}
+
+.edit_profile_title {
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+}
+
+.edit_profile_field_title {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.edit_profile_TA {
+    width: 100%;
+    height: 30px;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+}
+
+.edit_profile_buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.edit_profile_button {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #BC255A;
+}

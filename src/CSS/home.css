@@ -1,0 +1,91 @@
+/* search css */
+.home_search {
+    margin-top: 50px;
+}
+
+.home_search_TA {
+    height: 40px;
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 18px;
+    resize: none;
+    color: white;
+    background-color: #2C2C2C;
+}
+/* search css */
+
+
+/* reviews preview css */
+.game_reviews {
+    margin: 0px;
+    padding: 50px 0px 0px;
+    list-style: none;
+}
+
+.game {
+    height: 260px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: #2C2C2C;
+}
+
+.game_image {
+    height: 160px;
+}
+
+.game_details {
+    padding-left: 20px;
+}
+
+.game_title {
+    margin: 0px;
+    padding: 0px;
+    font-size: 32px;
+    font-weight: 600;
+    color: white;
+}
+
+.game_reviewer_author {
+    margin: 0px;
+    padding: 0px; 
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
+
+.game_rating {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+
+}
+
+.game_review_summary {
+    margin: 10px 0px 0px;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 1.5em;
+    font-weight: 300;
+    color: white;
+}
+
+.view_review_button {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #BC255A;
+}
+
+/* reviews preview css */

@@ -1,0 +1,67 @@
+/* Border box */
+.create_review_box {
+    margin-top: 50px;
+    padding:20px;
+    border-radius: 10px;
+    background-color: #2C2C2C;
+}
+
+/* Title */
+.create_review_title {
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+}
+
+/* title tags */
+.create_review_field_title {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+/* Title text area */
+.title_TA {
+    width: 100%;
+    height: 30px;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+}
+
+/* drop down style */
+.dropdown_rating {
+    margin-bottom: 20px;
+    border: 0px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: white;
+}
+
+.summary_TA {
+    width: 100%;
+    height: 200px;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+}
+
+.post_button {
+    margin-top: 15px;
+    padding: 5px 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #BC255A;
+}
