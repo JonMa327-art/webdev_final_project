@@ -13,6 +13,7 @@ const Navigation = () => {
 
     //create the selector and hold to start of everything
     const navTabs = useSelector((state) => state.navigationTab)
+    const logInLogout = useSelector((state) => state.loginLogoutReducer)
 
     //create the dispatcher and dispatches back somethings to the reducer to change the state
     const dispatch = useDispatch();
@@ -50,28 +51,28 @@ const Navigation = () => {
                 {/* Profile */}
                 <div onClick={() => changeHighlightedLink(profileName)}>
                     <Link to="/profile" className="link_text">
-                        {renderProfile(navTabs.profileLit, true)}
+                        {renderProfile(navTabs.profileLit, logInLogout.login)}
                     </Link>
                 </div>
 
                 {/* Create Review */}
                 <div onClick={() => changeHighlightedLink(createReviewName)}>
                     <Link to="/create_review" className="link_text">
-                        {renderCreateReview(navTabs.createReviewLit, true, true)}
+                        {renderCreateReview(navTabs.createReviewLit, logInLogout.login, logInLogout.login)}
                     </Link>
                 </div>
 
                 {/* Login Sign Up */}
                 <div onClick={() => changeHighlightedLink(loginSignupName)}>
                     <Link to="/login_signup" className="link_text">
-                        {renderLoginSignup(navTabs.loginSignupLit, true)}
+                        {renderLoginSignup(navTabs.loginSignupLit, logInLogout.login)}
                     </Link>
                 </div>
 
                 {/* Logout */}
                 <div onClick={() => changeHighlightedLink(logoutName)}>
                     <Link to="/logout" className="link_text">
-                        {renderLogout(navTabs.logoutLit, true)}
+                        {renderLogout(navTabs.logoutLit, logInLogout.login)}
                     </Link>
                 </div>
             </ul>
@@ -97,6 +98,11 @@ const renderHome = (homeLit) => {
 
 //Renders the profile tab depending on if you it is selected of it the person is logged in
 const renderProfile = (profileLit, loggedIn) => {
+    if (!loggedIn) {
+        return (
+            <></>
+        )
+    }
     if (profileLit) {
         return (
             <li className="link link-highlight">
@@ -113,7 +119,11 @@ const renderProfile = (profileLit, loggedIn) => {
 
 //Renders the create review tab base on it if is selected, if it is logged in, or if it is a writter
 const renderCreateReview = (createReviewLit, loggedIn, isWritter) => {
-
+    if (!loggedIn) {
+        return (
+            <></>
+        )
+    }
     if (createReviewLit) {
         return (
             <li className="link link-highlight">
@@ -132,7 +142,11 @@ const renderCreateReview = (createReviewLit, loggedIn, isWritter) => {
 
 //Renders the login screen and the sign up page
 const renderLoginSignup = (loginSignupLit, loggedIn) => {
-
+    if (loggedIn) {
+        return (
+            <></>
+        )
+    }
     if (loginSignupLit) {
         return (
             <li className="link link-highlight">
@@ -152,6 +166,11 @@ const renderLoginSignup = (loginSignupLit, loggedIn) => {
 
 //Renders the logout screen and the sign up page
 const renderLogout = (logoutLit, loggedIn) => {
+    if (!loggedIn) {
+        return (
+            <></>
+        )
+    }
     if (logoutLit) {
         return (
             <li className="link link-highlight">

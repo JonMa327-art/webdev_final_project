@@ -1,16 +1,33 @@
 import React from "react";
+
+//import dispatcher
 import { useDispatch } from "react-redux";
 
 
+//import links
+import { Link } from "react-router-dom";
+
 //Login Component
 const Login = () => {
+    //crate dispatcher
     const dispatch = useDispatch();
+
+    //dipatcher for switching between loggedIn and Loggedout
     const switchToSignup = () => {
         const action = {
             type: "signup"
         };
         dispatch(action);
     }
+
+    const changeToLogout = () => {
+        const action = {
+            type: "switchToLogin"
+        }
+        dispatch(action);
+    }
+
+
     return (
         <>
             <h1 className="login_signup_title">Login</h1>
@@ -23,9 +40,16 @@ const Login = () => {
 
             <div className="login_signup_buttons">
                 <button className="login_signup_button"
-                    onClick={switchToSignup}
-                >Sign Up</button>
-                <button className="login_signup_button">Login</button>
+                    onClick={switchToSignup}>
+                    Sign Up
+                </button>
+
+                <Link to="/">
+                    <button className="login_signup_button"
+                        onClick={changeToLogout}>
+                        Login
+                    </button>
+                </Link>
             </div>
         </>
     )

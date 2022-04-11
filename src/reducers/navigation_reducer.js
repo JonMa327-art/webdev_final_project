@@ -1,8 +1,16 @@
 //Reducer for switching between the tab selected
-const navigationTab = (state, action) => {
-    state = { setFalse }
+const navigationTab = (state =
+    {
+        homeLit: true,
+        profileLit: false,
+        createReviewLit: false,
+        loginSignupLit: false,
+        logoutLit: false
+    },
+    action) => {
     switch (action.type) {
         case "home":
+            state = { setFalse }
             return (
                 {
                     ...state,
@@ -10,6 +18,7 @@ const navigationTab = (state, action) => {
                 }
             )
         case "profile":
+            state = { setFalse }
             return (
                 {
                     ...state,
@@ -17,6 +26,7 @@ const navigationTab = (state, action) => {
                 }
             )
         case "createReview":
+            state = { setFalse }
             return (
                 {
                     ...state,
@@ -24,6 +34,7 @@ const navigationTab = (state, action) => {
                 }
             )
         case "loginSignup":
+            state = { setFalse }
             return (
                 {
                     ...state,
@@ -31,6 +42,7 @@ const navigationTab = (state, action) => {
                 }
             )
         case "logout":
+            state = { setFalse }
             return (
                 {
                     ...state,
@@ -39,13 +51,7 @@ const navigationTab = (state, action) => {
             )
 
         default:
-            return ({
-                homeLit: true,
-                profileLit: false,
-                createReviewLit: false,
-                loginSignupLit: false,
-                logoutLit: false
-            })
+            return ({ ...state })
     }
 }
 

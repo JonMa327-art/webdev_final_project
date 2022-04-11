@@ -1,18 +1,30 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 //Dispatcher
-import { Dispatch } from "react";
-import { act } from "react-dom/test-utils";
 import { useDispatch } from "react-redux";
 
 const Signup = () => {
+    //used to dispatch things to the reducer
     const dispatch = useDispatch();
+
+    //used to switch betweein the loggin forms
     const switchToLogin = () => {
         const action = {
             type: "login"
         }
         dispatch(action);
     }
+
+    const changeToLogout = () => {
+        const action = {
+            type: "switchToLogin"
+        }
+        dispatch(action);
+    }
+
+
     return (
         <>
             <h1 className="login_signup_title">Sign Up</h1>
@@ -39,10 +51,15 @@ const Signup = () => {
             </select>
 
             <div className="login_signup_buttons">
-                <button className="login_signup_button">Sign Up</button>
+                <Link to="/">
+                    <button className="login_signup_button"
+                        onClick={changeToLogout}>
+                        Sign Up
+                    </button>
+                </Link>
                 <button className="login_signup_button"
-                    onClick={switchToLogin}
-                >Login</button>
+                    onClick={switchToLogin}>
+                    Login</button>
             </div>
         </>
     )
