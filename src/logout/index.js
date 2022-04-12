@@ -48,6 +48,10 @@ const Logout = () => {
                     </Link>
                 </div>
             </div>
+            <>
+                {userList.map(user =>
+                    <p>{user.username}</p>)}
+            </>
         </div>
     )
 }

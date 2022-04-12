@@ -10,7 +10,7 @@ const Home = () => {
         <div className="col-10 col-lg-7 col-xl-7">
             {/* search bar */}
             <div className="home_search">
-                <textarea className="home_search_TA" placeholder="Search Game?">
+                <textarea className="home_search_TA" placeholder="Search Movie?">
 
                 </textarea>
             </div>
