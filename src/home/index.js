@@ -1,18 +1,61 @@
-import React from "react";
+import React, {useRef, useEffect, useState} from "react";
+import {Link, useNavigate, useParams, useLocation} from "react-router-dom";
 
 //import css 
 import '../CSS/home.css'
+import axios from "axios";
 
 
 //Home Component
 const Home = () => {
+    const [movies, setMovies] = useState([])
+    const {searchString} = useParams()
+    const titleRef = useRef()
+    // const navigate = useNavigate()
+    // const location = useLocation()
+    const OMDB_URL = 'https://www.omdbapi.com/?apikey=8fb7d1cc&s'
+    const searchMoviesByTitle = async () => {
+        const response = await axios.get(`${OMDB_URL}=${titleRef.current.value}`)
+        setMovies(response.data.Search)
+        // navigate(`/${titleRef.current.value}`)
+    }
+
+    // So the search string will be remembered on the home page
+    // useEffect(() => {
+    //     if(searchString) {
+    //         titleRef.current.value = searchString
+    //         searchMoviesByTitle()
+    //     }
+    // })
+
     return (
         <div className="col-10 col-lg-7 col-xl-7">
             {/* search bar */}
-            <div className="home_search">
-                <textarea className="home_search_TA" placeholder="Search Movie?">
-
-                </textarea>
+            <div>
+                <ul className={"list-group"}>
+                    <li className="list-group-item">
+                        <button
+                            onClick={searchMoviesByTitle}
+                            className="btn btn-primary float-end">
+                            Search
+                        </button>
+                        <input ref={titleRef}
+                               placeholder="Enter Title"
+                               className={"form-control w-75"}/>
+                    </li>
+                    {
+                        movies.map(movie =>
+                            <li className="list-group-item">
+                                <Link to={`/details/${movie.imdbID}`}>
+                                    <img src={movie.Poster}
+                                         height={100}
+                                         className="me-2"/>
+                                    {movie.Title}
+                                </Link>
+                            </li>
+                        )
+                    }
+                </ul>
             </div>
 
 

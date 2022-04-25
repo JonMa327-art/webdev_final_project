@@ -17,6 +17,7 @@ import Navigation from './navigation';
 import Logout from './logout';
 import Create_Review from './create_review';
 import Edit_Profile from './edit_profile';
+import MovieDetails from "./review-details";
 
 //Reducers
 import login_signup from './reducers/login_signup_reducer';
@@ -41,6 +42,12 @@ function App() {
             <Routes>
               <Route path='/'
                 element={<Home />} />
+
+              {/*<Route path='/:searchString'*/}
+              {/*       element={<Home />}/>*/}
+
+              <Route path='/details/:imdbID'
+                     element={<MovieDetails />}/>
 
               <Route path='/profile'
                 element={<Profile />} />
