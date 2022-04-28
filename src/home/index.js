@@ -11,22 +11,11 @@ const Home = () => {
     const [movies, setMovies] = useState([])
     const {searchString} = useParams()
     const titleRef = useRef()
-    // const navigate = useNavigate()
-    // const location = useLocation()
     const OMDB_URL = 'https://www.omdbapi.com/?apikey=8fb7d1cc&s'
     const searchMoviesByTitle = async () => {
         const response = await axios.get(`${OMDB_URL}=${titleRef.current.value}`)
         setMovies(response.data.Search)
-        // navigate(`/${titleRef.current.value}`)
     }
-
-    // So the search string will be remembered on the home page
-    // useEffect(() => {
-    //     if(searchString) {
-    //         titleRef.current.value = searchString
-    //         searchMoviesByTitle()
-    //     }
-    // })
 
     return (
         <div className="col-10 col-lg-7 col-xl-7">
@@ -62,22 +51,30 @@ const Home = () => {
             {/* List of results. Will refactor later but for now I will just layout the html here*/}
             <ul className="game_reviews">
                 <li className="game">
-                    <img src="images/game_image_test.jpeg" className="game_image" />
+                    <img src="images/game_image_test.jpeg"
+                         className="game_image"/>
                     <div className="game_details">
                         <h1 className="game_title">Game title</h1>
                         <p className="game_reviewer_author">author</p>
                         <p className="game_rating">rating 98 x 160</p>
-                        <p className="game_review_summary">List layout the html hereList of results. Will refactor later but for now I will just layout the html hereList of results. Will refactor later but for now I will just layout the html hereList of results. Will refactor later but for now I will just layout the html here</p>
+                        <p className="game_review_summary">List layout the html hereList of results. Will refactor later
+                            but for now I will just layout the html hereList of results. Will refactor later but for now
+                            I will just layout the html hereList of results. Will refactor later but for now I will just
+                            layout the html here</p>
                         <button className="view_review_button">View Review</button>
                     </div>
                 </li>
                 <li className="game">
-                    <img src="images/game_image_test.jpeg" className="game_image" />
+                    <img src="images/game_image_test.jpeg"
+                         className="game_image"/>
                     <div className="game_details">
                         <h1 className="game_title">Game title</h1>
                         <p className="game_reviewer_author">author</p>
                         <p className="game_rating">rating 98 x 160</p>
-                        <p className="game_review_summary">List layout the html hereList of results. Will refactor later but for now I will just layout the html hereList of results. Will refactor later but for now I will just layout the html hereList of results. Will refactor later but for now I will just layout the html here</p>
+                        <p className="game_review_summary">List layout the html hereList of results. Will refactor later
+                            but for now I will just layout the html hereList of results. Will refactor later but for now
+                            I will just layout the html hereList of results. Will refactor later but for now I will just
+                            layout the html here</p>
                         <button className="view_review_button">View Review</button>
                     </div>
                 </li>
