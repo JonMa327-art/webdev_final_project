@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //imports the actions so that they can called
 //for reference the order is This, actions, services (Which goes to the server), then the reducer
-import { updateUser, createUser, findAllUsers, deleteUser } from "../action/user_action";
+import { findAllUsers, logout } from "../action/user_action";
 
 //import Links to navigate to different screens
 import { Link } from "react-router-dom";
@@ -27,11 +27,8 @@ const Logout = () => {
     useEffect(() => { findAllUsers(dispatch) }, []);
 
     //function call to the switch backs
-    const changeToLogin = () => {
-        const action = {
-            type: "switchToLogout"
-        }
-        dispatch(action)
+    const handleLogOut = () => {
+        logout(dispatch, newUser)
     }
 
     return (
@@ -42,7 +39,7 @@ const Logout = () => {
                 <div className="login_signup_buttons">
                     <Link to="/">
                         <button className="login_signup_button"
-                            onClick={changeToLogin}>
+                            onClick={handleLogOut}>
                             Logout
                         </button>
                     </Link>

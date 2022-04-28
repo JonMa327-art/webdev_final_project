@@ -25,12 +25,13 @@ import navigationTab from './reducers/navigation_reducer';
 import loginLogoutReducer from './reducers/login_logout_reducer';
 import userReducer from './reducers/user_reducer';
 import reviewReducer from "./reducers/review_reducer";
-
+import currentUserReducer from './reducers/current_user_reducer';
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
 //Reducers imports
-import {Provider} from "react-redux";
-import {createStore, combineReducers} from "redux";
 
-const reducers = combineReducers({login_signup, loginLogoutReducer, navigationTab, userReducer, reviewReducer})
+const reducers = combineReducers({ login_signup, loginLogoutReducer, navigationTab, userReducer, currentUserReducer,reviewReducer })
+
 const store = createStore(reducers);
 
 //App Function
