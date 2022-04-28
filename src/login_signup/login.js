@@ -1,16 +1,36 @@
 import React from "react";
 
 //import dispatcher
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 
 //import links
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+//import user actions
+import { login } from "../action/user_action";
+
+//import use state
+import { useState } from "react";
+
 
 //Login Component
 const Login = () => {
+
+    const logInLogout = useSelector((state) => state.loginLogoutReducer)
+
     //crate dispatcher
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    //current user
+    const [currentUser, setCurrentUser] =
+        useState(
+            {
+                username: '',
+                password: '',
+            }
+        );
 
     //dipatcher for switching between loggedIn and Loggedout
     const switchToSignup = () => {
@@ -20,23 +40,34 @@ const Login = () => {
         dispatch(action);
     }
 
-    const changeToLogout = () => {
-        const action = {
-            type: "switchToLogin"
-        }
-        dispatch(action);
-    }
+    //handles what happens when a user logs in
+    const handleLogIn = () => {
+        login(dispatch, currentUser);
 
+        // if (logInLogout.login) {
+        navigate("/")
+        // }
+    }
 
     return (
         <>
             <h1 className="login_signup_title">Login</h1>
 
             <h2 className="login_signup_field_title">Username</h2>
-            <textarea className="login_signup_TA" placeholder="Enter Username"></textarea>
+            <textarea className="login_signup_TA" placeholder="Enter Username"
+                value={currentUser.username} onChange={(event) =>
+                    setCurrentUser({
+                        ...currentUser,
+                        username: event.target.value
+                    })}></textarea>
 
             <h2 className="login_signup_field_title">Password</h2>
-            <textarea className="login_signup_TA" placeholder="Enter Password"></textarea>
+            <textarea className="login_signup_TA" placeholder="Enter Password"
+                value={currentUser.password} onChange={(event) =>
+                    setCurrentUser({
+                        ...currentUser,
+                        password: event.target.value
+                    })}></textarea>
 
             <div className="login_signup_buttons">
                 <button className="login_signup_button"
@@ -44,12 +75,10 @@ const Login = () => {
                     Sign Up
                 </button>
 
-                <Link to="/">
-                    <button className="login_signup_button"
-                        onClick={changeToLogout}>
-                        Login
-                    </button>
-                </Link>
+                <button className="login_signup_button"
+                    onClick={handleLogIn}>
+                    Login
+                </button>
             </div>
         </>
     )

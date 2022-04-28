@@ -1,8 +1,5 @@
 import React from "react";
 
-//imported so we can navigate back to different places
-import { Link } from "react-router-dom";
-
 ///enables so that we can run commands when the applciations start
 import { useEffect, useState } from "react";
 
@@ -11,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //imports the actions so that they can called
 //for reference the order is This, actions, services (Which goes to the server), then the reducer
-import { updateUser, createUser, findAllUsers, deleteUser } from "../action/user_action";
+import { findAllUsers, signUp } from "../action/user_action";
 
 const Signup = () => {
     //makes it so we can pull from the reducers
@@ -26,13 +23,12 @@ const Signup = () => {
     const [newUser, setNewUser] =
         useState(
             {
-                username: '',
-                password: '',
-                email: '',
-                role: ''
+                username: "",
+                password: "",
+                email: "",
+                role: ""
             }
-        )
-        ;
+        );
 
     // runs when the application starts to get all of the users
     useEffect(() => { findAllUsers(dispatch) }, []);
@@ -45,17 +41,9 @@ const Signup = () => {
         dispatch(action);
     }
 
-    const changeToLogout = () => {
-        //I will need to create a new user with the entry fields
-        console.log(newUser.username);
-        console.log(newUser.password);
-        console.log(newUser.email);
-        console.log(newUser.role);
-        createUser(dispatch, newUser)
-        const action = {
-            type: "switchToLogin"
-        }
-        dispatch(action);
+    //is called when the signup button is hit, will send the new user to the server and check if there is already a duplicate email
+    const handleSignup = async () => {
+        signUp(dispatch, newUser)
     }
 
 
@@ -63,7 +51,6 @@ const Signup = () => {
         <>
             {/* Title */}
             <h1 className="login_signup_title">Sign Up</h1>
-
             {/* feilds to be filled out */}
             <h2 className="login_signup_field_title">Create Username</h2>
 
@@ -109,15 +96,19 @@ const Signup = () => {
                 <option value="WRITER">Writer</option>
             </select>
 
+            <div>
+                <button className="private_policy">
+
+                </button>
+            </div>
+
             <div className="login_signup_buttons">
 
                 {/* Creates a new user */}
-                <Link to="/">
-                    <button className="login_signup_button"
-                        onClick={changeToLogout}>
-                        Sign Up
-                    </button>
-                </Link>
+                <button className="login_signup_button"
+                    onClick={handleSignup}>
+                    Sign Up
+                </button>
 
                 {/* Navigates to the log in screen */}
                 <button className="login_signup_button"

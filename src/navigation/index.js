@@ -14,6 +14,7 @@ const Navigation = () => {
     //create the selector and hold to start of everything
     const navTabs = useSelector((state) => state.navigationTab)
     const logInLogout = useSelector((state) => state.loginLogoutReducer)
+    const currentUserRole = useSelector((state) => state.currentUserReducer)
 
     //create the dispatcher and dispatches back somethings to the reducer to change the state
     const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const Navigation = () => {
                 {/* Create Review */}
                 <div onClick={() => changeHighlightedLink(createReviewName)}>
                     <Link to="/create_review" className="link_text">
-                        {renderCreateReview(navTabs.createReviewLit, logInLogout.login, logInLogout.login)}
+                        {renderCreateReview(navTabs.createReviewLit, logInLogout.login, currentUserRole.role)}
                     </Link>
                 </div>
 
@@ -119,7 +120,7 @@ const renderProfile = (profileLit, loggedIn) => {
 
 //Renders the create review tab base on it if is selected, if it is logged in, or if it is a writter
 const renderCreateReview = (createReviewLit, loggedIn, isWritter) => {
-    if (!loggedIn) {
+    if (!loggedIn || isWritter != "WRITER") {
         return (
             <></>
         )
