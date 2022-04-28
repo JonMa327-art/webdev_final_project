@@ -91,15 +91,15 @@ const Create_Review = () => {
                         className="post_button">Post Review
                 </button>
 
-                <ul className="list-group">
-                    {
-                        reviews.map(review =>
-                            <li className="list-group-item"
-                                key={review._id}>
-                                {review.review}
-                            </li>)
-                    }
-                </ul>
+                {/*<ul className="list-group">*/}
+                {/*    {*/}
+                {/*        reviews.map(review =>*/}
+                {/*            <li className="list-group-item"*/}
+                {/*                key={review._id}>*/}
+                {/*                {review.review}*/}
+                {/*            </li>)*/}
+                {/*    }*/}
+                {/*</ul>*/}
             </div>
         </div>
     )
