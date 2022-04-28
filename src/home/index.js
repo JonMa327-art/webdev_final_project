@@ -1,11 +1,9 @@
 import React, {useRef, useEffect, useState} from "react";
-import {Link, useNavigate, useParams, useLocation} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 //import css 
 import '../CSS/home.css'
 import axios from "axios";
-
-import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
