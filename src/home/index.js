@@ -70,7 +70,7 @@ const Home = () => {
             </div>
 
             {/*Home page reviews*/}
-            <h1>See More Reviews</h1>
+            <h3>See More Reviews</h3>
             <ul className="game_reviews list-group">
                 {
                     reviews.map(review =>
