@@ -53,8 +53,9 @@ const MovieDetails = () => {
                     {
                         reviews.map(review =>
                             <li className="list-group-item">
+                                <b>Author: </b>
                                 <Link to={`/profile/${review.username}`}>
-                                    <b>Author: </b>{review.username}<br />
+                                    {review.username}<br />
                                 </Link>
                                 <b>Rating: </b>{review.rating}<br />
                                 <b>Review: </b>{review.review}<br />

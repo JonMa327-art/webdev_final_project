@@ -5,9 +5,9 @@ import { Link, useParams } from "react-router-dom";
 import '../CSS/home.css'
 import axios from "axios";
 
-import {useDispatch, useSelector} from "react-redux";
-import {getCurrentUser} from "../action/user_action";
-import {findAllReviews} from "../service/review_service";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUser } from "../action/user_action";
+import { findAllReviews } from "../service/review_service";
 
 //Home Component
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
 
     const [movies, setMovies] = useState([])
     const [reviews, setReviews] = useState([])
-    const {searchString} = useParams()
+    const { searchString } = useParams()
 
     const titleRef = useRef()
     const OMDB_URL = 'https://www.omdbapi.com/?apikey=8fb7d1cc&s'
@@ -28,13 +28,13 @@ const Home = () => {
         const response = await axios.get(`${OMDB_URL}=${titleRef.current.value}`)
         setMovies(response.data.Search)
     }
-    
+
     const getReviews = async () => {
         const allReviews = await findAllReviews()
         const movieReviews = allReviews.filter(r => r.username != currentUser?.username)
         setReviews(movieReviews)
     }
-    
+
     useEffect(() => {
         getReviews()
     }, [currentUser])
@@ -76,9 +76,12 @@ const Home = () => {
                     reviews.map(review =>
                         <li className="list-group-item">
                             <h5>{review.title}</h5>
-                            <b>Author: </b>{review.username}<br/>
-                            <b>Rating: </b>{review.rating}<br/>
-                            <b>Review: </b>{review.review}<br/>
+                            <b>Author: </b>
+                            <Link to={`/profile/${review.username}`}>
+                                {review.username}<br />
+                            </Link>
+                            <b>Rating: </b>{review.rating}<br />
+                            <b>Review: </b>{review.review}<br />
                         </li>
                     )
                 }

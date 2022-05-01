@@ -74,13 +74,10 @@ const Profile = () => {
                 <h1 className="author_name">{usernameProfileName}</h1>
                 <>
                     {usernameProfileName == loggedInUser.username &&
-
-                        <Link to="/edit_profile" className="link_text">
-                            <button className="edit_button">
-                                Edit Profile</button>
-                        </Link>}
+                        <p>{currentUser.email}</p>}
                 </>
             </div>
+
 
             <div className="reviewed_games">
                 {currentUser.role == "WRITER" &&
