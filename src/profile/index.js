@@ -11,6 +11,12 @@ import axios from "axios";
 
 import { useSelector } from "react-redux";
 
+import { useParams } from "react-router-dom";
+
+import { findAllUsers } from "../service/user_service";
+import { findAllReviews } from "../service/review_service";
+
+
 const api = axios.create({
     withCredentials: true
 });
@@ -21,6 +27,10 @@ const Profile = () => {
 
     //sets the current user to the user logged in
     const [currentUser, setCurrentUser] = useState({})
+
+    const [reviews, setReviews] = useState([])
+
+    const { usernameProfileName } = useParams()
 
     //selects the current user from the redcers
     const loggedInUser = useSelector((state) => state.currentUserReducer)
@@ -34,21 +44,42 @@ const Profile = () => {
             role: loggedInUser.role,
 
         }
-
         setCurrentUser(temp)
     }
 
-    //selects the user once the application starts
-    useEffect(() => { setUserState() }, [])
-    return (
-        <div className="col-10 col-lg-7 col-xl-7">
+    const getReviewsByUser = async (username) => {
+        const allReviews = await findAllReviews()
+        // console.log(allReviews)
+        const movieReviews = allReviews.filter(r => r.username == username)
+        setReviews(movieReviews)
+        console.log(reviews)
+    }
 
+    const getUserProfileData = async () => {
+        const allUser = await findAllUsers()
+        const specificUser = allUser.filter(user => user.username == usernameProfileName)
+        setCurrentUser(specificUser[0])
+    }
+
+    //selects the user once the application starts
+    useEffect(() => {
+        setUserState()
+        getUserProfileData()
+        getReviewsByUser(usernameProfileName)
+    }, [usernameProfileName])
+
+    return (
+        <div className="col-12 col-lg-7 col-xl-7">
             <div className="profile_info">
-                <h1 className="author_name">{loggedInUser.username}</h1>
-                <Link to="/edit_profile" className="link_text">
-                    <button className="edit_button">
-                        Edit Profile</button>
-                </Link>
+                <h1 className="author_name">{usernameProfileName}</h1>
+                <>
+                    {usernameProfileName == loggedInUser.username &&
+
+                        <Link to="/edit_profile" className="link_text">
+                            <button className="edit_button">
+                                Edit Profile</button>
+                        </Link>}
+                </>
             </div>
 
             <div className="liked_reviews">
@@ -56,7 +87,22 @@ const Profile = () => {
             </div>
 
             <div className="reviewed_games">
-                <h1 className="review_section_title">Your Game Reviews</h1>
+                {currentUser.role == "WRITER" &&
+                    <>
+                        <h1 className="review_section_title">Created Movie Reviews</h1>
+                        <ul className="list-group">
+                            {
+                                reviews.map(review =>
+                                    <li className="list-group-item">
+                                        <b>Moive Title: </b>{review.title}<br />
+                                        <b>Rating: </b>{review.rating}<br />
+                                        <b>Review: </b>{review.review}<br />
+                                    </li>
+                                )
+                            }
+                        </ul>
+                    </>
+                }
             </div>
         </div>
     )

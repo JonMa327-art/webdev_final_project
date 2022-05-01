@@ -36,12 +36,11 @@ const Edit_Profile = () => {
             role: updatedUserInfo.role
         }
 
-        console.log(action)
         dispatch(action)
     }
 
     return (
-        <div className="col-10 col-lg-7 col-xl-7">
+        <div className="col-12 col-lg-7 col-xl-7">
             <div className="edit_profile_block">
                 <h1 className="edit_profile_title">Edit Profile</h1>
 
@@ -60,9 +59,6 @@ const Edit_Profile = () => {
                             ...updatedUserInfo,
                             password: event.target.value
                         })}></textarea>
-                {/* 
-                <h2 className="edit_profile_field_title">Email</h2>
-                <textarea className="edit_profile_TA" placeholder="Create Password"></textarea> */}
 
                 <div className="edit_profile_buttons">
                     <button className="edit_profile_button"

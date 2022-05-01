@@ -2,7 +2,7 @@
 const currentUserReducer = (state = {
     username: "",
     password: "",
-    role: "",
+    role: "READER",
     email: "",
 
 }, action) => {

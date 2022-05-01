@@ -52,6 +52,7 @@ export const logout = async (user) => {
 export const getCurrentUser = async () => {
     const response = await api.post("http://localhost:4000/api/profile")
 
+    console.log("getting user" + JSON.stringify(response.data))
     return response.data
 }
 
