@@ -82,10 +82,6 @@ const Profile = () => {
                 </>
             </div>
 
-            <div className="liked_reviews">
-                <h1 className="review_section_title">Reviews you Liked</h1>
-            </div>
-
             <div className="reviewed_games">
                 {currentUser.role == "WRITER" &&
                     <>
