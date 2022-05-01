@@ -1,10 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from "axios";
+
+import { useSelector } from 'react-redux';
 
 import '../CSS/create_review.css'
 import Pre from '../utils/pre'
 
 const Create_Review = () => {
+    const currentUser = useSelector((state) => state.currentUserReducer)
+
     const OMDB_URL = 'https://www.omdbapi.com/?apikey=8fb7d1cc&s='
     const [movies, setMovies] = useState([])
     const [reviews, setReviews] = useState([])
@@ -28,15 +32,14 @@ const Create_Review = () => {
             imdbID: selectedMovie.imdbID,
             review: reviewRef.current.value,
             rating: `${rating}`,
-            username: 'emily', // TODO
+            username: currentUser.username,
         }
         setReviews([...reviews, new_review])
         const response = await axios.post("http://localhost:4000/api/reviews", new_review)
-        console.log(response)
     }
 
     return (
-        <div className="col-10 col-lg-7 col-xl-7">
+        <div className="col-12 col-lg-7 col-xl-7">
             <div className="create_review_box">
                 <h1 className="create_review_title">Create Review</h1>
 
@@ -52,16 +55,16 @@ const Create_Review = () => {
                                 Search
                             </button>
                             <input ref={titleRef}
-                                   placeholder="Enter Title"
-                                   className={"form-control w-75"}/>
+                                placeholder="Enter Title"
+                                className={"form-control w-75"} />
                         </li>
                         {
                             movies.map(movie =>
                                 <li onClick={() => setSelectedMovie(movie)}
                                     className={`list-group-item ${selectedMovie?.imdbID === movie.imdbID && "bg-primary"}`}>
                                     <img src={movie.Poster}
-                                         height={100}
-                                         className="me-2"/>
+                                        height={100}
+                                        className="me-2" />
                                     {movie.Title}
                                 </li>
                             )
@@ -72,8 +75,8 @@ const Create_Review = () => {
 
                 <h2 className="create_review_field_title">Rating</h2>
                 <select value={rating}
-                        onChange={handleRating}
-                        className="dropdown_rating">
+                    onChange={handleRating}
+                    className="dropdown_rating">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -83,12 +86,12 @@ const Create_Review = () => {
 
                 <h2 className="create_review_field_title">Review</h2>
                 <textarea ref={reviewRef}
-                          className="summary_TA"
-                          placeholder="Enter review"></textarea>
+                    className="summary_TA"
+                    placeholder="Enter review"></textarea>
 
                 <button disabled={!selectedMovie}
-                        onClick={handleReview}
-                        className="post_button">Post Review
+                    onClick={handleReview}
+                    className="post_button">Post Review
                 </button>
             </div>
         </div>

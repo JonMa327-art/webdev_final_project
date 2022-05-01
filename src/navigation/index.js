@@ -15,6 +15,7 @@ const Navigation = () => {
     const navTabs = useSelector((state) => state.navigationTab)
     const logInLogout = useSelector((state) => state.loginLogoutReducer)
     const currentUserRole = useSelector((state) => state.currentUserReducer)
+    const currentUser = useSelector((state) => state.currentUserReducer)
 
     //create the dispatcher and dispatches back somethings to the reducer to change the state
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Navigation = () => {
     const loginSignupName = "loginSignup"
     const logoutName = "logout"
     return (
-        <div className="col-2 col-lg-2 col-xl-3">
+        <div className=" col-12 col-lg-2 col-xl-3">
             <ul className="links">
                 {/* Moive review title */}
                 <li className="link" onClick={() => changeHighlightedLink(homeName)}>
@@ -51,7 +52,7 @@ const Navigation = () => {
 
                 {/* Profile */}
                 <div onClick={() => changeHighlightedLink(profileName)}>
-                    <Link to="/profile" className="link_text">
+                    <Link to={`/profile/${currentUser.username}`} className="link_text">
                         {renderProfile(navTabs.profileLit, logInLogout.login)}
                     </Link>
                 </div>

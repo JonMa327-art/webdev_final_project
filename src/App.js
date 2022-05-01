@@ -7,7 +7,7 @@ import './vendors/fontawesome/css/all.min.css';
 import './CSS/index.css'
 
 //React Route Imports
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 //Different Routes
 import Home from './home'
@@ -30,7 +30,7 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 //Reducers imports
 
-const reducers = combineReducers({ login_signup, loginLogoutReducer, navigationTab, userReducer, currentUserReducer,reviewReducer })
+const reducers = combineReducers({ login_signup, loginLogoutReducer, navigationTab, userReducer, currentUserReducer, reviewReducer })
 
 const store = createStore(reducers);
 
@@ -41,28 +41,28 @@ function App() {
             <BrowserRouter>
                 <div className='container'>
                     <div className='row'>
-                        <Navigation/>
+                        <Navigation />
                         <Routes>
                             <Route path='/'
-                                   element={<Home/>}/>
+                                element={<Home />} />
 
                             <Route path='/details/:imdbID'
-                                   element={<MovieDetails/>}/>
+                                element={<MovieDetails />} />
 
-                            <Route path='/profile'
-                                   element={<Profile/>}/>
+                            <Route path='/profile/:usernameProfileName'
+                                element={<Profile />} />
 
                             <Route path='/login_signup'
-                                   element={<Login_Signup/>}/>
+                                element={<Login_Signup />} />
 
                             <Route path='/logout'
-                                   element={<Logout/>}/>
+                                element={<Logout />} />
 
                             <Route path='/create_review'
-                                   element={<Create_Review/>}/>
+                                element={<Create_Review />} />
 
                             <Route path='/edit_profile'
-                                   element={<Edit_Profile/>}/>
+                                element={<Edit_Profile />} />
 
                         </Routes>
                     </div>

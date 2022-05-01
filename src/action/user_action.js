@@ -50,12 +50,25 @@ export const login = async (dispatch, user) => {
     //awaits a responce from the service which get the responce from the server to crate a new user
     try {
         await service.login(user);
+        const currentUser = await service.getCurrentUser()
 
         //switches the state into a logged in mode
         const logUserIn = {
             type: "switchToLogin"
         }
+
+        //set the state of the current user when they are logged in
+        const action = {
+            type: "currentUser",
+            username: currentUser.username,
+            password: currentUser.password,
+            email: currentUser.Email,
+            role: currentUser.role
+        }
+
+
         dispatch(logUserIn);
+        dispatch(action);
     }
     catch (e) {
         alert("User not found")

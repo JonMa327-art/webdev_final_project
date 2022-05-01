@@ -32,7 +32,7 @@ const Logout = () => {
     }
 
     return (
-        <div className="col-10 col-lg-7 col-xl-7">
+        <div className="col-12 col-lg-7 col-xl-7">
             <div className="login_block">
                 <h1 className="login_signup_title">Logout</h1>
 
@@ -45,10 +45,6 @@ const Logout = () => {
                     </Link>
                 </div>
             </div>
-            <>
-                {userList.map(user =>
-                    <p>{user.username}</p>)}
-            </>
         </div>
     )
 }

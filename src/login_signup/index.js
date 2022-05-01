@@ -18,7 +18,7 @@ const Login_Signup = () => {
     const login = useSelector((state) => state.login_signup.login)
 
     return (
-        <div className="col-10 col-lg-7 col-xl-7">
+        <div className="col-12 col-lg-7 col-xl-7">
             <div className="login_block">
                 {
                     login && <Login />
