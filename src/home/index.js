@@ -31,7 +31,7 @@ const Home = () => {
     
     const getReviews = async () => {
         const allReviews = await findAllReviews()
-        const movieReviews = allReviews//.filter(r => r.username != currentUser?.username)
+        const movieReviews = allReviews.filter(r => r.username != currentUser?.username)
         setReviews(movieReviews)
     }
     
