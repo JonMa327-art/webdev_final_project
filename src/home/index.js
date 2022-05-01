@@ -5,20 +5,39 @@ import { Link, useParams } from "react-router-dom";
 import '../CSS/home.css'
 import axios from "axios";
 
-import { useDispatch, useSelector } from "react-redux";
-
-import { getCurrentUser } from "../action/user_action";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentUser} from "../action/user_action";
+import {findAllReviews} from "../service/review_service";
 
 //Home Component
 const Home = () => {
+
+    const currentUser = useSelector((state) => (state.currentUserReducer))
+    // console.log(currentUser)
+
+    const dispatch = useDispatch()
+
     const [movies, setMovies] = useState([])
-    const { searchString } = useParams()
+    const [reviews, setReviews] = useState([])
+    const {searchString} = useParams()
+
     const titleRef = useRef()
     const OMDB_URL = 'https://www.omdbapi.com/?apikey=8fb7d1cc&s'
+
     const searchMoviesByTitle = async () => {
         const response = await axios.get(`${OMDB_URL}=${titleRef.current.value}`)
         setMovies(response.data.Search)
     }
+    
+    const getReviews = async () => {
+        const allReviews = await findAllReviews()
+        const movieReviews = allReviews//.filter(r => r.username != currentUser?.username)
+        setReviews(movieReviews)
+    }
+    
+    useEffect(() => {
+        getReviews()
+    }, [currentUser])
 
     return (
         <div className="col-12 col-lg-7 col-xl-7">
@@ -50,36 +69,19 @@ const Home = () => {
                 </ul>
             </div>
 
-
-            {/* List of results. Will refactor later but for now I will just layout the html here*/}
-            <ul className="game_reviews">
-                <li className="game">
-                    {/* <img src="images/game_image_test.jpeg" className="game_image" /> */}
-
-                    <div className="game_details">
-                        <h1 className="game_title">Movie title</h1>
-                        <p className="game_reviewer_author">author</p>
-                        <p className="game_rating">rating 98 x 160</p>
-                        <p className="game_review_summary">List layout the html hereList of results. Will refactor later
-                            but for now I will just layout the html hereList of results. Will refactor later but for now
-                            I will just layout the html hereList of results. Will refactor later but for now I will just
-                            layout the html here</p>
-                        <button className="view_review_button">View Review</button>
-                    </div>
-                </li>
-                <li className="game">
-                    {/* <img src="images/game_image_test.jpeg" className="game_image" /> */}
-                    <div className="game_details">
-                        <h1 className="game_title">Movie title</h1>
-                        <p className="game_reviewer_author">author</p>
-                        <p className="game_rating">rating 98 x 160</p>
-                        <p className="game_review_summary">List layout the html hereList of results. Will refactor later
-                            but for now I will just layout the html hereList of results. Will refactor later but for now
-                            I will just layout the html hereList of results. Will refactor later but for now I will just
-                            layout the html here</p>
-                        <button className="view_review_button">View Review</button>
-                    </div>
-                </li>
+            {/*Home page reviews*/}
+            <h1>See More Reviews</h1>
+            <ul className="game_reviews list-group">
+                {
+                    reviews.map(review =>
+                        <li className="list-group-item">
+                            <h5>{review.title}</h5>
+                            <b>Author: </b>{review.username}<br/>
+                            <b>Rating: </b>{review.rating}<br/>
+                            <b>Review: </b>{review.review}<br/>
+                        </li>
+                    )
+                }
             </ul>
         </div>
     )
