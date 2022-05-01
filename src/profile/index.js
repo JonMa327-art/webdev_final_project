@@ -90,7 +90,7 @@ const Profile = () => {
                             {
                                 reviews.map(review =>
                                     <li className="list-group-item">
-                                        <b>Moive Title: </b>{review.title}<br />
+                                        <b>Movie Title: </b>{review.title}<br />
                                         <b>Rating: </b>{review.rating}<br />
                                         <b>Review: </b>{review.review}<br />
                                     </li>
